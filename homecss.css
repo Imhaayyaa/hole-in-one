@@ -1,0 +1,124 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Video background section */
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.video-section video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Navigation bar */
+nav {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 10px; /* Adjusted for higher position */
+    width: 100%;
+    background-color: rgba(43, 60, 81, 0.8); /* Semi-transparent background */
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Page content section */
+.page-content {
+    text-align: center;
+    padding: 40px 30px;
+    z-index: 10; /* Make sure it's above the video */
+    position: relative;
+}
+
+/* Offers container */
+.offers-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 20px; /* Add space between the offers */
+}
+
+.offer-box {
+    width: 45%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.offer-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.offer-box:hover {
+    transform: scale(1.05);
+}
+
+.offer-box .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.offer-box:hover .overlay {
+    opacity: 1;
+}
+
+.offer-box h3 {
+    font-size: 1.8em;
+    text-align: center;
+    margin: 0;
+}
+
+.offer-box p {
+    text-align: center;
+    font-size: 1.2em;
+}

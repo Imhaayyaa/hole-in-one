@@ -1,0 +1,123 @@
+/* عشان نرجع إعدادات العناصر للمستوى الأساسي */
+* {
+    margin: 0; /* صفرنا الهوامش */
+    padding: 0; /* صفرنا الحواف */
+    box-sizing: border-box; /* خلينا حجم العنصر يشمل الحدود والحواف */
+}
+
+/* تنسيق الجسم العام */
+body {
+    font-family: Arial, sans-serif; /* اخترنا خط Arial */
+    background-color: #f4f4f4; /* الخلفية بتكون لونها رمادي فاتح */
+    color: #333; /* النصوص بلون غامق عشان تكون واضحة */
+}
+
+/* تنسيق شريط التنقل */
+nav {
+    display: flex; /* خليها تعرض العناصر بشكل أفقي */
+    justify-content: center; /* خلي الروابط بالمنتصف */
+    background-color: #2b3c51; /* الخلفية لونها رمادي غامق */
+    border-bottom: 2px solid #4CAF50; /* تحت الشريط في خط أخضر */
+}
+
+nav a {
+    color: white; /* الروابط لونها أبيض */
+    padding: 15px 25px; /* المسافة حول النصوص */
+    text-decoration: none; /* إزالة خط تحت الرابط */
+    text-align: center; /* النصوص في الوسط */
+    font-size: 1.2em; /* حجم الخط شوي كبير */
+}
+
+nav a:hover {
+    background-color: #4CAF50; /* لما تحوم فوق الرابط يتغير لونه للأخضر */
+    color: white; /* النصوص تظل بيضاء */
+    border-radius: 5px; /* الزوايا تصير مدورة */
+}
+
+/* تنسيق حاوية العرض (العروض) */
+.offer-container {
+    display: flex; /* خليهم جنب بعض */
+    justify-content: space-between; /* المسافة بين العروض بتكون متساوية */
+    padding: 50px; /* المسافة حوالين العروض */
+}
+
+/* تنسيق قسم الصورة للعروض */
+.offer-images {
+    position: relative; /* عشان نقدر نحط الأزرار في مكان معين */
+    width: 50%; /* خلي عرضها نص الشاشة */
+}
+
+.offer-images img {
+    width: 100%; /* خلي الصورة تاخد كل العرض */
+    height: auto; /* ارتفاع الصورة يتناسب مع العرض */
+    border-radius: 10px; /* زوايا الصورة مدورة */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل خفيف حوالين الصورة */
+}
+
+/* أزرار التنقل (السابق والتالي) */
+.offer-images .prev, .offer-images .next {
+    position: absolute; /* خليهم ثابتين فوق الصورة */
+    top: 50%; /* خليهم بالمنتصف بالضبط */
+    transform: translateY(-50%); /* عشان نوسطهم تمام */
+    background-color: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة بالأسود */
+    color: white; /* النصوص بيضاء */
+    border: none; /* ما في حدود حول الأزرار */
+    padding: 10px; /* المسافة حوالين النص في الزر */
+    font-size: 2em; /* النص أكبر عشان يكون واضح */
+    cursor: pointer; /* لما تمرر الفأرة على الزر يظهر شكل اليد */
+}
+
+.offer-images .prev {
+    left: 10px; /* الزر الأول (السابق) على اليسار */
+}
+
+.offer-images .next {
+    right: 10px; /* الزر الثاني (التالي) على اليمين */
+}
+
+/* تنسيق تفاصيل العرض */
+.offer-details {
+    width: 45%; /* عرضها بيكون 45% من العرض الكلي */
+    padding: 20px; /* المسافة حوالين النصوص */
+    background-color: white; /* الخلفية بيضاء */
+    border-radius: 10px; /* الزوايا مدورة */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف حول العلبة */
+}
+
+.offer-details h2 {
+    font-size: 2em; /* حجم العنوان كبير */
+}
+
+.offer-details .offer-description {
+    font-size: 1.2em; /* وصف العرض بحجم نص أكبر شوي */
+    margin-bottom: 20px; /* المسافة تحت الوصف */
+}
+
+/* تنسيق النجوم (التقييم) */
+.star {
+    color: gray;  /* النجوم الفارغة لونها رمادي */
+    font-size: 1.5em; /* حجم النجمة كبير شوي */
+}
+
+/* تنسيق السعر */
+#offerPrice {
+    font-size: 1.5em; /* حجم النص للسعر أكبر */
+    font-weight: bold; /* النص غامق عشان يبرز */
+    color: #4CAF50; /* اللون أخضر عشان يلفت الانتباه */
+}
+
+/* تنسيق الأزرار */
+button {
+    background-color: #4CAF50; /* خلفية الزر أخضر */
+    color: white; /* النصوص بيضاء */
+    padding: 15px 30px; /* المسافة حوالين النص في الزر */
+    border: none; /* ما في حدود حول الزر */
+    font-size: 1.2em; /* حجم النص في الزر أكبر */
+    cursor: pointer; /* لما تمرر الفأرة يظهر شكل اليد */
+    border-radius: 5px; /* الزوايا مدورة */
+    transition: background-color 0.3s ease; /* تأثير بسيط عند تغيير الخلفية */
+}
+
+button:hover {
+    background-color: #45a049; /* لما تمرر الفأرة يتغير لون الزر للأخضر الداكن */
+}
