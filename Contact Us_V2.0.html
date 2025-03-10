@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="homecss.css"> <!-- رابط لملف الـ CSS الخارجي -->
+    <script src="homejs.js" defer></script> <!-- رابط لملف الـ JavaScript الخارجي -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* إعادة تعيين الأنماط العامة */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: azure;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: rgb(0, 0, 0);
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 100px 0;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.8em;
+            margin-top: 15px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #2b3c51;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .contact-container {
+            padding: 40px 30px;
+            margin-top: 40px;
+        }
+
+        .contact-form {
+            background-image: url("c:/Users/User/Desktop/pic folder/golfball.jpg");
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #2a3d54;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+        }
+
+        footer .social-icons {
+            margin-top: 20px;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 15px;
+            font-size: 2em;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #4CAF50;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                padding: 12px;
+            }
+            .contact-container {
+                padding: 20px;
+            }
+        }
+
+        /* تنسيق الأزرار لتغيير حجم النص */
+        .resize-buttons {
+            position: fixed;
+            top: 50%; /* وضع الأزرار في منتصف الصفحة عموديًا */
+            left: 50%; /* وضع الأزرار في منتصف الصفحة أفقيًا */
+            transform: translate(-50%, -50%); /* تحريك الأزرار لتكون في المنتصف */
+            text-align: center;
+        }
+
+        .resize-buttons button {
+            font-size: 1.5rem;
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .resize-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- أزرار التكبير والتصغير -->
+    <div class="resize-buttons">
+        <button onclick="resizeText('increase')">A+</button>
+        <button onclick="resizeText('decrease')">A-</button>
+    </div>
+
+    <header>
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Share your feedback or suggestions below.</p>
+    </header>
+
+    <nav>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/home_V2.0.html">Home</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/golf_V2.0.html">Golf</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/fancilities_V2.0.html">Facilities</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/special_offers_V2.0.html">Special Offers</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Contact%20Us_V2.0.html">Contact Us</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Hotel_V2.0.html">Hotel</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/map.html">Map</a>
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-form">
+            <h2>Send Us Your Feedback</h2>
+            <form action="#" method="post">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" class="fab fa-facebook"></a>
+            <a href="https://twitter.com" target="_blank" class="fab fa-twitter"></a>
+            <a href="https://instagram.com" target="_blank" class="fab fa-instagram"></a>
+            <a href="https://linkedin.com" target="_blank" class="fab fa-linkedin"></a>
+            <a href="https://www.yourhotelwebsite.com" target="_blank" class="fas fa-globe"></a>
+        </div>
+    </footer>
+
+    <script>
+        let currentFontSize = 16;
+
+        function resizeText(action) {
+            const elements = document.querySelectorAll('body, h1, h2, p, a, input, textarea, button');
+
+            if (action === 'increase') {
+                currentFontSize += 2;
+            } else if (action === 'decrease') {
+                currentFontSize -= 2;
+            }
+
+            elements.forEach((element) => {
+                element.style.fontSize = currentFontSize + 'px';
+            });
+        }
+    </script>
+
+</body>
+</html>

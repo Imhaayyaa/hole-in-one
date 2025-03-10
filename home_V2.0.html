@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hole In One Golf Resort</title>
+    <link rel="stylesheet" href="homecss.css">
+    <script src="homejs.js" defer></script>
+    <style>
+        /* إضافة تنسيق لأزرار التكبير والتصغير */
+        .zoom-controls {
+            position: fixed;
+            top: 100px; /* تغيير هنا لتحديد الموقع الأنسب للأزرار */
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+        .zoom-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .zoom-button:hover {
+            background-color: #555;
+        }
+
+        /* تخصيص مظهر الأزرار للتمييز */
+        .zoom-button:focus {
+            outline: 3px solid #ffcc00;
+        }
+
+        /* التأكد من أن المحتوى يحتوي على مقياس تكبير وتغيير الحجم */
+        .zoomable-content {
+            transition: transform 0.3s ease-in-out; /* إضافة انتقال سلس */
+        }
+    </style>
+</head>
+<body>
+    <!-- قسم الفيديو الخلفي -->
+    <section class="video-section">
+        <video autoplay loop muted>
+            <source src="c:\Users\User\Desktop\pic folder\homevid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- العنوان فوق الفيديو -->
+        <div class="video-title">
+            Hole In One
+        </div>
+    </section>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/home_V2.0.html">Home</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/golf_V2.0.html">Golf</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/fancilities_V2.0.html">Facilities</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/special_offers_V2.0.html">Special Offers</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Contact%20Us_V2.0.html">Contact Us</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Hotel_V2.0.html">Hotel</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/map.html">Map</a>
+    </nav>
+
+    <!-- قسم المحتوى الرئيسي -->
+    <div class="page-content zoomable-content">
+        <h2>Activity</h2>
+        <div class="offers-container">
+            <!-- عرض 1 -->
+            <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/fancilities_V2.0.html" class="offer-box">
+                <img src="c:\Users\User\Desktop\pic folder\Breakfast buffet.jpg" alt="Golf Offer 1">
+                <div class="overlay">
+                    <h3>5 Nights Stay</h3>
+                    <p>Full Board + 5 Rounds of Golf</p>
+                </div>
+            </a>
+
+            <!-- عرض 2 -->
+            <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/fancilities_V2.0.html" class="offer-box">
+                <img src="c:\Users\User\Desktop\pic folder\room.jpg" alt="Golf Offer 2">
+                <div class="overlay">
+                    <h3>2 Nights Stay</h3>
+                    <p>With Breakfast + 3 Rounds of Golf</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- أزرار التكبير والتصغير -->
+    <div class="zoom-controls">
+        <button class="zoom-button" onclick="zoomIn()" aria-label="Zoom In">+</button>
+        <button class="zoom-button" onclick="zoomOut()" aria-label="Zoom Out">−</button>
+    </div>
+
+    <script>
+        let zoomLevel = 1;
+
+        // دالة لتكبير الصفحة
+        function zoomIn() {
+            zoomLevel += 0.1;  // زيادة مستوى التكبير
+            document.querySelector('.zoomable-content').style.transform = `scale(${zoomLevel})`;
+        }
+
+        // دالة لتصغير الصفحة
+        function zoomOut() {
+            zoomLevel -= 0.1;  // تقليل مستوى التكبير
+            if (zoomLevel > 0.2) {  // تأكد من أن التكبير لا يصبح أقل من مستوى معين
+                document.querySelector('.zoomable-content').style.transform = `scale(${zoomLevel})`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hole In One Golf Resort</title>
+    <style>
+        /* هنا بنعمل reset لجميع العناصر علشان نبدأ من نقطة نظيفة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* تنسيق الجسم */
+        body {
+            font-family: Arial, sans-serif; /* تحديد نوع الخط */
+            background-color: #f4f4f4; /* لون الخلفية */
+            color: #333; /* لون النص */
+        }
+
+        /* قسم الفيديو في الخلفية */
+        .video-section {
+            position: relative; /* تحديد موضع الفيديو */
+            width: 100%;
+            height: 100vh; /* الفيديو هياخد كامل الارتفاع */
+            overflow: hidden; /* إخفاء الأجزاء اللي ممكن تطلع بره الشاشة */
+            opacity: 0; /* الفيديو مختفي في البداية */
+            animation: fadeIn 2s forwards; /* تطبيق تأثير الظهور التدريجي */
+        }
+
+        .video-background {
+            position: absolute; /* تحديد موضع الفيديو بالنسبة للقسم */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* الفيديو هيتناسب مع حجم القسم ويغطيه بالكامل */
+            animation: fadeIn 2s forwards; /* تأثير الظهور التدريجي على الفيديو */
+        }
+
+        /* تأثير fade-in على الفيديو */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0; /* في البداية الفيديو مش ظاهر */
+            }
+            100% {
+                opacity: 1; /* بعد 2 ثانية، الفيديو بيظهر بشكل كامل */
+            }
+        }
+
+        /* شريط التنقل */
+        nav {
+            display: flex;
+            justify-content: center; /* وضع الروابط في المنتصف */
+            position: fixed; /* الشريط ثابت في أعلى الصفحة */
+            top: 10px; /* رفع الشريط شوية عن حافة الصفحة */
+            width: 100%; /* الشريط بيغطي كامل العرض */
+            background-color: rgba(43, 60, 81, 0.8); /* خلفية شبه شفافة للشريط */
+            padding: 10px 0; /* تحديد المسافة داخل الشريط */
+            z-index: 1000; /* التأكد من أن الشريط فوق أي محتوى تاني */
+        }
+
+        nav a {
+            color: white; /* لون النص أبيض */
+            padding: 15px 25px; /* المسافة داخل الروابط */
+            text-decoration: none; /* إزالة التسطير تحت النص */
+            text-align: center; /* توسيط النص داخل الرابط */
+            font-size: 0.8em; /* تكبير حجم الخط شوية */
+            transition: background-color 0.3s ease, color 0.3s ease; /* تأثيرات الانتقال عند التفاعل مع الرابط */
+        }
+
+        nav a:hover {
+            background-color: #4CAF50; /* تغيير الخلفية عند مرور الماوس */
+            color: white; /* النص يفضل أبيض عند التفاعل */
+            border-radius: 5px; /* جعل الزوايا مستديرة شوية */
+        }
+
+        /* محتوى الصفحة الرئيسية */
+        .page-content {
+            text-align: center; /* توسيط النص */
+            padding: 40px 30px; /* تحديد المسافة داخل القسم */
+            z-index: 10; /* التأكد من أن المحتوى فوق الفيديو */
+            position: relative;
+        }
+
+        /* قسم العروض */
+        .offers-container {
+            display: flex;
+            justify-content: center; /* توسيط العروض */
+            margin-top: 40px; /* إضافة مسافة فوق العروض */
+            gap: 20px; /* إضافة مسافة بين كل عرض */
+        }
+
+        .offer-box {
+            width: 45%; /* تحديد عرض كل عرض */
+            height: 300px; /* تحديد ارتفاع العرض */
+            position: relative; /* تحديد موضع العرض داخل العنصر */
+            overflow: hidden; /* إخفاء الأجزاء اللي بتطلع بره العرض */
+            border-radius: 10px; /* جعل الزوايا مستديرة */
+            cursor: pointer; /* تغيير شكل المؤشر عند المرور على العرض */
+            transition: transform 0.3s ease; /* تأثير التحريك عند التفاعل مع العرض */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف حول العرض */
+        }
+
+        .offer-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* التأكد من أن الصورة تغطي العرض بالكامل */
+        }
+
+        .offer-box:hover {
+            transform: scale(1.05); /* تكبير العرض شوية عند التفاعل */
+        }
+
+        /* طبقة التغطية فوق الصورة في العرض */
+        .offer-box .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* خلفية مظللة عند التفاعل */
+            color: white; /* النص باللون الأبيض */
+            display: flex;
+            justify-content: center; /* توسيط النص */
+            align-items: center; /* توسيط النص عموديًا */
+            opacity: 0; /* جعل الطبقة غير مرئية في البداية */
+            transition: opacity 0.3s ease; /* تأثير الانتقال للظهور التدريجي */
+            padding: 20px; /* تحديد المسافة داخل الطبقة */
+        }
+
+        .offer-box:hover .overlay {
+            opacity: 1; /* ظهور الطبقة عند التفاعل مع العرض */
+        }
+
+        .offer-box h3 {
+            font-size: 1.8em; /* تكبير حجم عنوان العرض */
+            text-align: center; /* توسيط العنوان */
+            margin: 0; /* إزالة المسافة من حول العنوان */
+        }
+
+        .offer-box p {
+            text-align: center; /* توسيط النص */
+            font-size: 1.2em; /* تكبير حجم الخط */
+        }
+
+        /* تنسيق الأزرار للتكبير والتصغير */
+        .zoom-controls {
+            position: fixed;
+            top: 150px; /* تعديل هذا الرقم حسب المكان الذي تريده للأزرار */
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .zoom-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .zoom-button:hover {
+            background-color: #555;
+        }
+
+        /* التأثير السلس للتحجيم */
+        .zoomable-content {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- قسم الفيديو الخلفي -->
+    <section class="video-section">
+        <video autoplay loop muted class="video-background">
+            <source src="c:\Users\User\Desktop\pic folder\golf.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/home_V2.0.html">Home</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/golf_V2.0.html">Golf</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/fancilities_V2.0.html">Facilities</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/special_offers_V2.0.html">Special Offers</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Contact%20Us_V2.0.html">Contact Us</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Hotel_V2.0.html">Hotel</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/map.html">Map</a>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <div class="page-content zoomable-content">
+        <h2>Golf Packages</h2>
+        <div class="offers-container">
+            <!-- عرض 1 -->
+            <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/%D8%B5%D9%81%D8%AD%D8%A7%D8%AA%20%D8%A7%D9%84%D9%88%D9%8A%D8%A8/Facilities.html" class="offer-box">
+                <img src="c:\Users\User\Desktop\pic folder\golf2.png" alt="Golf Offer 1">
+                <div class="overlay">
+                    <h3>5 Nights Stay</h3>
+                    <p>Full Board + 5 Rounds of Golf</p>
+                </div>
+            </a>
+
+            <!-- عرض 2 -->
+            <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/%D8%B5%D9%81%D8%AD%D8%A7%D8%AA%20%D8%A7%D9%84%D9%88%D9%8A%D8%A8/Facilities.html" class="offer-box">
+                <img src="c:\Users\User\Desktop\pic folder\golfgif.gif" alt="Golf Offer 2">
+                <div class="overlay">
+                    <h3>2 Nights Stay</h3>
+                    <p>With Breakfast + 3 Rounds of Golf</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- أزرار التكبير والتصغير -->
+    <div class="zoom-controls">
+        <button class="zoom-button" onclick="zoomIn()">+</button>
+        <button class="zoom-button" onclick="zoomOut()">−</button>
+    </div>
+
+    <script>
+        let zoomLevel = 1;
+
+        // دالة لتكبير الصفحة
+        function zoomIn() {
+            zoomLevel += 0.1;
+            document.querySelector('.zoomable-content').style.transform = `scale(${zoomLevel})`;
+        }
+
+        // دالة لتصغير الصفحة
+        function zoomOut() {
+            zoomLevel -= 0.1;
+            if (zoomLevel > 0.2) {
+                document.querySelector('.zoomable-content').style.transform = `scale(${zoomLevel})`;
+            }
+        }
+    </script>
+</body>
+</html>

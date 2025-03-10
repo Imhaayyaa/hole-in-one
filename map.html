@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resort Map</title>
+    
+    <!-- ربط مكتبة Leaflet لخرائط OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <style>
+        /* إعادة تعيين الهوامش والمسافات */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* شريط التنقل */
+        nav {
+            display: flex; /* عرض العناصر بجانب بعضها */
+            justify-content: center; /* توسيط العناصر داخل الشريط */
+            background-color: #2b3c51; /* اللون الأزرق الداكن */
+            border-bottom: 2px solid #4CAF50; /* خط أخضر أسفل الشريط */
+        }
+
+        /* تنسيق الروابط داخل شريط التنقل */
+        nav a {
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, color 0.3s ease; /* تأثيرات على الخلفية واللون عند المرور */
+        }
+
+        /* تأثير عند المرور على الروابط */
+        nav a:hover {
+            background-color: #4CAF50; /* تغيير الخلفية إلى اللون الأخضر */
+            color: #fff;
+            border-radius: 5px; /* إضافة حواف دائرية */
+        }
+
+        /* تنسيق الخريطة */
+        html, body {
+            height: 100%; /* جعل الصفحة تأخذ كل الارتفاع */
+            width: 100%; /* جعل الصفحة تأخذ كل العرض */
+        }
+
+        /* تخصيص مساحة الخريطة */
+        #map {
+            width: 100%; /* الخريطة تأخذ عرض الشاشة بالكامل */
+            height: 100%; /* الخريطة تأخذ ارتفاع الشاشة بالكامل */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <!-- روابط التنقل بين الصفحات -->
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/home_V2.0.html">Home</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/golf_V2.0.html">Golf</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/fancilities_V2.0.html">Facilities</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/special_offers_V2.0.html">Special Offers</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Contact%20Us_V2.0.html">Contact Us</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Hotel_V2.0.html">Hotel</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V1.0/map.html">Map</a>
+    </nav>
+
+    <!-- الخريطة باستخدام Leaflet -->
+    <div id="map"></div>
+
+    <!-- ربط مكتبة Leaflet لعمل الخريطة -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        // إنشاء الخريطة
+        var map = L.map('map').setView([38.7165, -9.1543], 15); // تحديد الإحداثيات لموقع المنتجع في البرتغال
+
+        // إضافة طبقة خرائط OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' // نسبة الحقوق لمساهمة OpenStreetMap
+        }).addTo(map);
+
+        // إضافة علامة (Marker) في موقع المنتجع
+        L.marker([38.7165, -9.1543]).addTo(map)
+            .bindPopup('Hall & One Resort') // عند النقر على العلامة، تظهر هذه الرسالة
+            .openPopup(); // فتح النوافذ المنبثقة تلقائيًا عند تحميل الصفحة
+    </script>
+
+</body>
+</html>

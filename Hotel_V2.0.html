@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Rooms</title>
+    <style>
+        /* تنسيق جسم الصفحة */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* تنسيق شريط التنقل */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #2b3c51;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* تنسيق المحتوى العام */
+        .page-content {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        /* تنسيق حاوية الغرف */
+        .room-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .room-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* تنسيق الصورة */
+        .room-box img {
+            width: 500px;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .room-box img:hover {
+            transform: scale(1.05);
+        }
+
+        /* تنسيق الوصف والسعر والتقييم */
+        .room-description {
+            margin-left: 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            max-width: 400px;
+            color: #333;
+            text-align: left;
+        }
+
+        .room-description div {
+            margin-bottom: 10px;
+        }
+
+        /* الأسهم اللي بتظهر فوق الصورة */
+        .arrow-left, .arrow-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .arrow-left {
+            left: 20px;
+        }
+
+        .arrow-right {
+            right: 20px;
+        }
+
+        /* تنسيق النجوم (التقييم) */
+        .stars {
+            color: gold;
+            font-size: 1.5em;
+        }
+
+        /* تنسيق السعر */
+        .room-price {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        /* تنسيق الأزرار لتغيير حجم النص */
+        .resize-buttons {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .resize-buttons button {
+            font-size: 1.5rem;
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .resize-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- أزرار التكبير والتصغير -->
+    <div class="resize-buttons">
+        <button onclick="resizeText('increase')">A+</button>
+        <button onclick="resizeText('decrease')">A-</button>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/home_V2.0.html">Home</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/golf_V2.0.html">Golf</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/fancilities_V2.0.html">Facilities</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/special_offers_V2.0.html">Special Offers</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Contact%20Us_V2.0.html">Contact Us</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/Hotel_V2.0.html">Hotel</a>
+        <a href="file:///C:/Users/User/Desktop/%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9/V2.0/map.html">Map</a>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="page-content">
+        <h2>Choose Your Room</h2>
+        
+        <!-- عرض الغرف مع الصور والوصف -->
+        <div class="room-container">
+            <div class="arrow-left" onclick="prevRoom()">&#8592;</div>
+            <div class="room-box">
+                <img id="room-image" src="c:/Users/User/Desktop/pic folder/1room.jfif" alt="Room Image">
+                <div class="room-description" id="room-description">
+                    <div id="room-desc-text">This is a cozy single room with all the essentials for your stay.</div>
+                    <div class="stars" id="room-rating">★★★★☆</div>
+                    <div class="room-price" id="room-price">$100 per night</div>
+                </div>
+            </div>
+            <div class="arrow-right" onclick="nextRoom()">&#8594;</div>
+        </div>
+    </div>
+
+    <script>
+        let currentRoom = 0; 
+
+        const roomDescriptions = [
+            "This is a cozy single room with all the essentials for your stay.",
+            "This is a spacious double room perfect for couples or friends.",
+            "Our family room is large enough for the whole family, with extra comfort."
+        ];
+
+        const roomRatings = [
+            "★★★★☆", 
+            "★★★☆☆", 
+            "★★★★★"
+        ];
+
+        const roomPrices = [
+            "$100 per night", 
+            "$150 per night", 
+            "$200 per night"
+        ];
+
+        const roomImages = [
+            "c:/Users/User/Desktop/pic folder/1room.jfif", 
+            "c:/Users/User/Desktop/pic folder/2room.jpg", 
+            "c:/Users/User/Desktop/pic folder/3room.jfif"
+        ];
+
+        function changeRoom(index) {
+            currentRoom = index; 
+            document.getElementById("room-image").src = roomImages[index]; 
+            document.getElementById("room-desc-text").textContent = roomDescriptions[index]; 
+            document.getElementById("room-rating").textContent = roomRatings[index]; 
+            document.getElementById("room-price").textContent = roomPrices[index]; 
+        }
+
+        function prevRoom() {
+            currentRoom = (currentRoom - 1 + roomDescriptions.length) % roomDescriptions.length;
+            changeRoom(currentRoom); 
+        }
+
+        function nextRoom() {
+            currentRoom = (currentRoom + 1) % roomDescriptions.length;
+            changeRoom(currentRoom); 
+        }
+
+        function resizeText(action) {
+            const elements = document.querySelectorAll('body, h2, p, .room-description, .room-price, .stars');
+
+            let currentFontSize = parseFloat(window.getComputedStyle(elements[0]).fontSize);
+
+            if (action === 'increase') {
+                currentFontSize += 2;
+            } else if (action === 'decrease') {
+                currentFontSize -= 2;
+            }
+
+            elements.forEach((element) => {
+                element.style.fontSize = currentFontSize + 'px';
+            });
+        }
+
+        // تهيئة الغرفة الأولى
+        changeRoom(currentRoom);
+    </script>
+</body>
+</html>
